@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <system>
+            <children>
+                <translations translate="title" module="translations">
+                    <title>Translations</title>
+                    <sort_order>25</sort_order>
+                    <action>adminhtml/translations/index</action>
+                </translations>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <translations translate="title" module="translations">
+                                <title>Translations</title>
+                                <sort_order>25</sort_order>
+                                <children>
+                                    <save translate="title" module="translations">
+                                        <title>Save Translation</title>
+                                    </save>
+                                    <ai translate="title" module="translations">
+                                        <title>Generate AI Translation Drafts</title>
+                                    </ai>
+                                    <scan translate="title" module="translations">
+                                        <title>Scan Translations</title>
+                                    </scan>
+                                    <import translate="title" module="translations">
+                                        <title>Import Translations</title>
+                                    </import>
+                                    <export translate="title" module="translations">
+                                        <title>Export Translations</title>
+                                    </export>
+                                </children>
+                            </translations>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

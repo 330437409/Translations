@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_translations_index>
+        <reference name="content">
+            <block type="translations/adminhtml_translation" name="translations.container"/>
+        </reference>
+    </adminhtml_translations_index>
+
+    <adminhtml_translations_edit>
+        <reference name="content">
+            <block type="translations/adminhtml_translation_edit" name="translations.edit"/>
+        </reference>
+        <reference name="left">
+            <block type="translations/adminhtml_translation_edit_tabs" name="translations.edit.tabs">
+                <block type="translations/adminhtml_translation_edit_tab_translation" name="translations.edit.tab.translation"/>
+                <block type="translations/adminhtml_translation_edit_tab_context" name="translations.edit.tab.context"/>
+                <block type="translations/adminhtml_translation_edit_tab_usage" name="translations.edit.tab.usage"/>
+                <block type="translations/adminhtml_translation_edit_tab_aiDraft" name="translations.edit.tab.ai_draft"/>
+                <action method="addTab"><name>translation</name><block>translations.edit.tab.translation</block></action>
+                <action method="addTab"><name>context</name><block>translations.edit.tab.context</block></action>
+                <action method="addTab"><name>usage</name><block>translations.edit.tab.usage</block></action>
+                <action method="addTab"><name>ai_draft</name><block>translations.edit.tab.ai_draft</block></action>
+            </block>
+        </reference>
+    </adminhtml_translations_edit>
+
+    <adminhtml_translations_import>
+        <reference name="content">
+            <block type="translations/adminhtml_translation_import" name="translations.import"/>
+        </reference>
+    </adminhtml_translations_import>
+
+    <adminhtml_translations_export>
+        <reference name="content">
+            <block type="translations/adminhtml_translation_export" name="translations.export"/>
+        </reference>
+    </adminhtml_translations_export>
+</layout>

@@ -1,0 +1,46 @@
+<?php
+/**
+ * SPDX-FileCopyrightText: 2026 Maho <https://mahocommerce.com>
+ * SPDX-License-Identifier: AFL-3.0
+ * @package default_default
+ */
+
+/** @var Maho_Translations_Block_Adminhtml_Translation $this */
+?>
+<div class="content-header">
+    <h3 class="icon-head head-translations"><?= $this->getHeaderText() ?></h3>
+    <p class="form-buttons"><?= $this->getButtonsHtml() ?></p>
+</div>
+
+<form id="translations-scan-form" method="post" action="<?= $this->escapeUrl($this->getScanUrl()) ?>" style="display:none">
+    <?= $this->getBlockHtml('formkey') ?>
+    <?php foreach ($this->getScanParams() as $name => $value): ?>
+        <input type="hidden" name="<?= $this->escapeHtml($name) ?>" value="<?= $this->escapeHtml((string) $value) ?>">
+    <?php endforeach ?>
+</form>
+
+<?php if ($this->isAiAllowed()): ?>
+<form id="translations-ai-missing-form" method="post" action="<?= $this->escapeUrl($this->getAiGenerateUrl()) ?>" style="display:none">
+    <?= $this->getBlockHtml('formkey') ?>
+    <input type="hidden" name="mode" value="missing">
+    <input type="hidden" name="locale" value="<?= $this->escapeHtml($this->getRequest()->getParam('locale', 'en_US')) ?>">
+    <input type="hidden" name="store" value="<?= (int) $this->getRequest()->getParam('store', 0) ?>">
+    <?php foreach ($this->getAiFilterParams() as $name => $value): ?>
+        <input type="hidden" name="<?= $this->escapeHtml($name) ?>" value="<?= $this->escapeHtml($value) ?>">
+    <?php endforeach ?>
+</form>
+<?php endif ?>
+
+<?php if (!$this->hasScanData()): ?>
+    <div class="messages">
+        <ul class="messages">
+            <li class="notice-msg">
+                <ul><li><span><?= $this->__('No translation scan data yet. Run a scan to build the index.') ?></span></li></ul>
+            </li>
+        </ul>
+    </div>
+<?php endif ?>
+
+<?= $this->getSelectorHtml() ?>
+
+<?= $this->getGridHtml() ?>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Acme_Shop>
+            <version>1.0.0</version>
+        </Acme_Shop>
+    </modules>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <acme translate="title">
+                            <title>Acme Shop</title>
+                        </acme>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

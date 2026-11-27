@@ -1,0 +1,65 @@
+<?php
+/**
+ * SPDX-FileCopyrightText: 2026 Maho <https://mahocommerce.com>
+ * SPDX-License-Identifier: AFL-3.0
+ * @package default_default
+ */
+
+/** @var Maho_Translations_Block_Adminhtml_Translation_Selector $this */
+?>
+<style>
+.translations-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+    margin: 10px 0 16px;
+}
+.translations-filter label {
+    font-weight: 600;
+}
+</style>
+<form id="translations-filter" method="get" action="<?= $this->escapeUrl($this->getFilterUrl()) ?>">
+    <div class="translations-filter">
+        <label for="translations-locale"><?= $this->__('Locale') ?></label>
+        <select name="locale" id="translations-locale" class="select">
+            <?php foreach ($this->getLocaleOptions() as $locale): ?>
+                <option value="<?= $this->escapeHtml($locale) ?>"<?= $locale === $this->getLocale() ? ' selected="selected"' : '' ?>><?= $this->escapeHtml($locale) ?></option>
+            <?php endforeach ?>
+        </select>
+
+        <label for="translations-store"><?= $this->__('Store') ?></label>
+        <select name="store" id="translations-store" class="select">
+            <?php foreach ($this->getStoreOptions() as $storeId => $label): ?>
+                <option value="<?= (int) $storeId ?>"<?= (int) $storeId === $this->getStoreId() ? ' selected="selected"' : '' ?>><?= $this->escapeHtml($label) ?></option>
+            <?php endforeach ?>
+        </select>
+
+        <label for="translations-status"><?= $this->__('Status') ?></label>
+        <select name="status" id="translations-status" class="select">
+            <?php foreach ($this->getStatusOptions() as $value => $label): ?>
+                <option value="<?= $this->escapeHtml($value) ?>"<?= $value === $this->getStatus() ? ' selected="selected"' : '' ?>><?= $this->escapeHtml($label) ?></option>
+            <?php endforeach ?>
+        </select>
+
+        <label for="translations-module"><?= $this->__('Module') ?></label>
+        <select name="module" id="translations-module" class="select">
+            <option value=""><?= $this->__('All modules') ?></option>
+            <?php foreach ($this->getModuleOptions() as $module): ?>
+                <option value="<?= $this->escapeHtml($module) ?>"<?= $module === $this->getModule() ? ' selected="selected"' : '' ?>><?= $this->escapeHtml($module) ?></option>
+            <?php endforeach ?>
+        </select>
+
+        <label for="translations-area"><?= $this->__('Area') ?></label>
+        <select name="area" id="translations-area" class="select">
+            <?php foreach ($this->getAreaOptions() as $value => $label): ?>
+                <option value="<?= $this->escapeHtml($value) ?>"<?= $value === $this->getAreaFilter() ? ' selected="selected"' : '' ?>><?= $this->escapeHtml($label) ?></option>
+            <?php endforeach ?>
+        </select>
+
+        <label for="translations-query"><?= $this->__('Search') ?></label>
+        <input type="text" name="q" id="translations-query" class="input-text" value="<?= $this->escapeHtml($this->getQuery()) ?>">
+
+        <button type="submit" class="scalable"><?= $this->__('Filter') ?></button>
+    </div>
+</form>
